@@ -16,5 +16,7 @@ export class dockerbuildstack extends Stack {
             directory: path.join(__dirname, '../docker'),
             assetName: "Nginx_Image",
           });
+          
+          console.log(asset.imageTag);
     }
 }
