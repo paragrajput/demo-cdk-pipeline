@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
+import { pipelinestage } from './pipelinestage';
 
 export class DemoCdkPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -15,5 +16,8 @@ export class DemoCdkPipelineStack extends cdk.Stack {
       })
     });
 
+    const testStage = pipeline.addStage(new pipelinestage(this,"PipelineTestStage",{
+      stageName: 'DockerDeploy'
+    }))
   }
 }
